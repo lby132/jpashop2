@@ -29,7 +29,7 @@ class MemberServiceTest {
     public void 회원가입() throws Exception {
         //given
         Member member = new Member();
-        member.setName("kim");
+        member.setName("lby");
 
         //when
         final Long savedId = memberService.join(member);
@@ -42,10 +42,20 @@ class MemberServiceTest {
     @Test
     public void 중복_회원_예외() throws Exception {
         //given
+        final Member member1 = new Member();
+        member1.setName("lby");
+
+        final Member member2 = new Member();
+        member2.setName("lby");
 
         //when
-
+        memberService.join(member1);
+        assertThrows(IllegalStateException.class, () -> {
+            memberService.join(member2);
+        }).equals("이미 존재하는 회원입니다.");
         //then
+       // fail("예외가 발생해야 한다.");
+
     }
 
 }
