@@ -1,5 +1,6 @@
 package jpabook2.jpashop2.domain.item;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jpabook2.jpashop2.domain.OrderItem;
 import jpabook2.jpashop2.domain.OrderStatus;
 import lombok.AccessLevel;

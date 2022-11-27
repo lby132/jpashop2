@@ -1,5 +1,6 @@
 package jpabook2.jpashop2.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jpabook2.jpashop2.domain.item.Item;
 import jpabook2.jpashop2.domain.item.Order;
 import lombok.AccessLevel;
@@ -8,8 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
-import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
 
@@ -27,6 +26,7 @@ public class OrderItem {
     @JoinColumn(name = "item_id")
     private Item item;
 
+    @JsonIgnore //엔티티를 직접호출할때는 양방향 연관관계가 걸려있으면 양쪽을 서로 호출하면서 무한루프가 걸리기 때문에 한쪽은 @JsonIgnore를 해줘야한다.
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
