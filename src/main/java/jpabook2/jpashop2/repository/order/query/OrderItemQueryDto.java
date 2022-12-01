@@ -1,10 +1,15 @@
 package jpabook2.jpashop2.repository.order.query;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
+import java.util.List;
+import java.util.stream.Collector;
 
 @Data
 public class OrderItemQueryDto {
 
+    @JsonIgnore
     private Long orderId;
     private String itemName;
     private int orderPrice;
@@ -16,4 +21,6 @@ public class OrderItemQueryDto {
         this.orderPrice = orderPrice;
         this.count = count;
     }
+
+
 }
